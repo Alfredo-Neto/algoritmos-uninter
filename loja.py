@@ -43,7 +43,7 @@ class Loja:
 		self._quantidade_produto = nova_quantidade
 
 	def boas_vindas(self):
-		self._boas_vindas = "Bem-vindo a Loja do Alfredo Neto"
+		self._boas_vindas = "Bem-vindo a Loja do Alfredo de Aguiar Braule Pinto Neto"
 		print(self._boas_vindas)
 
 	def pegar_valor_do_produto(self):

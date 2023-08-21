@@ -1,4 +1,6 @@
 class Loja:
+
+	#ADICIONAR COMENTÁRIOS
 	def __init__(self):
 		self._valor_produto = None
 		self._quantidade_produto = None

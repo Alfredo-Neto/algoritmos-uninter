@@ -15,11 +15,15 @@ class Loja:
 
 			if quantidade < 200:
 				self.valor_sem_desconto(valor, quantidade)
+				self.valor_com_desconto(valor, quantidade, 0)
 			elif quantidade >= 200 and quantidade < 1000:
+				self.valor_sem_desconto(valor, quantidade)
 				self.valor_com_desconto(valor, quantidade, 5)
 			elif quantidade >= 1000 and quantidade < 2000:
+				self.valor_sem_desconto(valor, quantidade)
 				self.valor_com_desconto(valor, quantidade, 10)
 			else:
+				self.valor_sem_desconto(valor, quantidade)
 				self.valor_com_desconto(valor, quantidade, 15)
 
 	@property

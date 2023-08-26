@@ -30,17 +30,17 @@ class Sorveteria:
             print(line)
 
 data = [
-    ["1", "R$ 6,00", "R$ 7,00", "R$ 8,00"],
-    ["2", "R$ 10,00", "R$ 12,00", "R$ 14,00"],
-    ["3", "R$ 14,00","R$ 17,00", "R$ 20,00"]
+	["1", "R$ 6,00", "R$ 7,00", "R$ 8,00"],
+	["2", "R$ 10,00", "R$ 12,00", "R$ 14,00"],
+	["3", "R$ 14,00","R$ 17,00", "R$ 20,00"]
 ]
 
 headers = [
-           "No DE BOLAS", 
-           "Sabor Tradicional (tr)", 
-           "Sabor Premium (pr)", 
-           "Sabor Especial (es)"
-          ]
+	"No DE BOLAS", 
+	"Sabor Tradicional (tr)", 
+	"Sabor Premium (pr)", 
+	"Sabor Especial (es)"
+]
 
 sorveteria = Sorveteria()
 sorveteria.tabulate(data, headers)

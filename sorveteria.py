@@ -36,7 +36,7 @@ data = [
 ]
 
 headers = [
-	"No DE BOLAS", 
+	"Nº DE BOLAS", 
 	"Sabor Tradicional (tr)", 
 	"Sabor Premium (pr)", 
 	"Sabor Especial (es)"

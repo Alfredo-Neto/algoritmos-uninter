@@ -12,7 +12,7 @@ class LojaTest(UnitTest):
         with unittest.mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
             loja = Loja()
             loja.boas_vindas()
-            self._assert(mock_stdout.getvalue() == "Bem-vindo a Loja do Alfredo Neto\n")
+            self._assert(mock_stdout.getvalue() == "Bem-vindo a Loja do Alfredo de Aguiar Braule Pinto Neto\n")
 
     @mock.patch('loja.input', create=True)
     def test_pegar_valor_do_produto(self, mocked_input):

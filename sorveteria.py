@@ -1,5 +1,6 @@
 class Sorveteria:
 		
+		# construtor para inicialização de alguns valores
 		def __init__(self):
 			self._boas_vindas = None
 			self._flavour = None
@@ -16,6 +17,7 @@ class Sorveteria:
 				"Sabor Especial (es)"
 			]
 
+		# roda o programa
 		def run(self):
 			self.boas_vindas()
 			pedido = 0
@@ -58,6 +60,8 @@ class Sorveteria:
 			print(self._boas_vindas)
 			self._tabulate(self._table_data, self._table_headers)
 
+		# itera sobre as estruturas de dados para pegar os valores 
+		# correspondentes aos pedidos do usuario e retorna o total, e, se falhar, retorna False
 		def pegar_pedido(self):
 			scoops = [
 				["1", "6", "7", "8"],
@@ -94,18 +98,25 @@ class Sorveteria:
 			
 			return False
 
+		# Pega o input do usuario referente ao sabor do sorvete.
+		# Se a verificação do input retornar False, o método também
+		# retorna False, senão retorna o sabor do sorvete
 		def pegar_sabor_do_sorvete(self):
 			self.flavour = input("Entre com o Sabor desejado (tr/es/pr): ")
 			if self._is_valid_flavour(self.flavour):
 				return self.flavour
 			return False
 		
+		# Pega o input do usuario referente ao número de bolas de sorvete.
+		# Se a verificação do input retornar False, o método também
+		# retorna False, senão retorna o número de bolas de sorvete
 		def pegar_num_de_scoops(self):
 			self.num_of_icecream_scoops = input("Entre com o número de bolas de sorvete desejado (1/2/3): ")
 			if self._is_valid_number_of_icecream_scoops(self.num_of_icecream_scoops):
 				return self.num_of_icecream_scoops
 			return False
 		
+		# verifica se o input do usuario corresponde a um dos valores do array
 		def _is_valid_flavour(self, value):
 			if value not in ["tr", "es", "pr"]:
 				print("Sabor inválido. Tente novamente")
@@ -113,6 +124,7 @@ class Sorveteria:
 			
 			return True
 		
+		# verifica se o input do usuario corresponde a um dos valores do array
 		def _is_valid_number_of_icecream_scoops(self, value):
 			if value not in ["1", "2", "3"]:
 				print("Número de bolas de sorvete inválido. Tente novamente.")
@@ -120,6 +132,7 @@ class Sorveteria:
 			
 			return True
 
+		# método para criar e printar uma tabela de acordo com os dados fornecidos como parâmetros
 		def _tabulate(self, data, headers):
 			# Encontrar a largura ideal para cada coluna
 			column_widths = [
@@ -153,5 +166,6 @@ class Sorveteria:
 					print(data_line)
 					print(line)
 
+# executa o programa
 sorveteria = Sorveteria()
 sorveteria.run()

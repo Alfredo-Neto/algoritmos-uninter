@@ -9,13 +9,28 @@ class Sorveteria:
 				["2", "R$ 10,00", "R$ 12,00", "R$ 14,00"],
 				["3", "R$ 14,00","R$ 17,00", "R$ 20,00"]
 			]
-
 			self._table_headers = [
 				"Nº DE BOLAS", 
 				"Sabor Tradicional (tr)", 
 				"Sabor Premium (pr)", 
 				"Sabor Especial (es)"
 			]
+
+		def run(self):
+			self.boas_vindas()
+			pedido = 0
+			while True:
+				pedido += self.pegar_pedido()
+
+				if pedido:
+					prosseguir = input("Deseja mais algum sorvete (s/digite outra tecla)?: ")
+					if prosseguir == 's':
+						continue
+					else:
+						print("O valor total a ser pago: R${},00".format(pedido))
+						break
+				else:
+					continue
 
 		# encapsulando valores privados com getters e setters
 		@property
@@ -41,37 +56,43 @@ class Sorveteria:
 		def boas_vindas(self):
 			self._boas_vindas = "Bem-vindo a Sorveteria do Alfredo de Aguiar Braule Pinto Neto"
 			print(self._boas_vindas)
-			self._tabulate(self._data, self._headers)
+			self._tabulate(self._table_data, self._table_headers)
 
-		def pegar_pedidos(self, user_flavour, user_scoop):
+		def pegar_pedido(self):
 			scoops = [
-				["1", "R$ 6,00", "R$ 7,00", "R$ 8,00"],
-				["2", "R$ 10,00", "R$ 12,00", "R$ 14,00"],
-				["3", "R$ 14,00","R$ 17,00", "R$ 20,00"]
+				["1", "6", "7", "8"],
+				["2", "10", "12", "14"],
+				["3", "14","17", "20"]
 			]
-
 			flavours = {
 				"tr": "TRADICIONAL", 
 				"pr": "PREMIUM", 
 				"es": "ESPECIAL"
 			}
 
-			preco, sabor, bola = '', '', ''
-			for index, (flavour, value) in enumerate(flavours.items()):
-				if flavour == user_flavour:
-					sabor = value
-					for scoop in scoops:
-						if scoop[0] == str(user_scoop):
-							bola = scoop[0]
-							preco = scoop[index + 1]
+			user_scoop, user_flavour, total = '', '', 0
+			user_flavour = self.pegar_sabor_do_sorvete()
+			if user_flavour:
+				user_scoop = self.pegar_num_de_scoops()
+			if user_flavour and user_scoop:
+				preco, sabor, num_bolas = '', '', ''
+				for index, (flavour, value) in enumerate(flavours.items()):
+					if flavour == user_flavour:
+						sabor = value
+						for scoop in scoops:
+							if scoop[0] == str(user_scoop):
+								num_bolas = scoop[0]
+								preco = scoop[index + 1]
+								total += int(preco)
+				
+				plural = 'bola'
+				if int(num_bolas) > 1:
+					plural += "s"
+				formatted_string = "Você pediu {} {} de sorvete no sabor {}: R${},00".format(num_bolas, plural, sabor, preco)	
+				print(formatted_string)
+				return total
 			
-			plural = 'bola'
-			if int(bola) > 1:
-				plural += "s"
-			formatted_string = "Você pediu {} {} de sorvete no sabor {}: {}".format(bola, plural, sabor, preco)	
-			print(formatted_string)
-			return True
-
+			return False
 
 		def pegar_sabor_do_sorvete(self):
 			self.flavour = input("Entre com o Sabor desejado (tr/es/pr): ")
@@ -81,7 +102,6 @@ class Sorveteria:
 		
 		def pegar_num_de_scoops(self):
 			self.num_of_icecream_scoops = input("Entre com o número de bolas de sorvete desejado (1/2/3): ")
-			print(self.num_of_icecream_scoops)
 			if self._is_valid_number_of_icecream_scoops(self.num_of_icecream_scoops):
 				return self.num_of_icecream_scoops
 			return False
@@ -134,7 +154,4 @@ class Sorveteria:
 					print(line)
 
 sorveteria = Sorveteria()
-user_flavour = "es"
-user_scoop = "3"
-result = sorveteria.pegar_pedidos(user_flavour, user_scoop)
-print(result)
+sorveteria.run()

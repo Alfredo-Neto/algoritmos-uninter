@@ -74,7 +74,7 @@ class Sorveteria:
 				"es": "ESPECIAL"
 			}
 
-			user_scoop, user_flavour, total = '', '', 0
+			user_scoop, user_flavour = '', ''
 			user_flavour = self.pegar_sabor_do_sorvete()
 			if user_flavour:
 				user_scoop = self.pegar_num_de_scoops()
@@ -87,14 +87,13 @@ class Sorveteria:
 							if scoop[0] == str(user_scoop):
 								num_bolas = scoop[0]
 								preco = scoop[index + 1]
-								total += int(preco)
 				
 				plural = 'bola'
 				if int(num_bolas) > 1:
 					plural += "s"
 				formatted_string = "Você pediu {} {} de sorvete no sabor {}: R${},00".format(num_bolas, plural, sabor, preco)	
 				print(formatted_string)
-				return total
+				return int(preco)
 			
 			return False
 

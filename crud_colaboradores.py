@@ -1,7 +1,7 @@
 class CrudColaboradores:
     def __init__(self):
-        self.lista_colaboradores = []
-        self.id_global = 0
+        self.lista_colaboradores = [] # Lista para armazenar os colaboradores
+        self.id_global = 0 # Variável global para gerar IDs únicos
 
     def cadastrar_colaborador(self, id):
         print("*****************************************************************************")
@@ -21,7 +21,7 @@ class CrudColaboradores:
 					"salario": salario
         }
         
-        self.lista_colaboradores.append(colaborador)
+        self.lista_colaboradores.append(colaborador) # Adiciona o colaborador à lista
         print("Colaborador cadastrado com sucesso!")
 
     def consultar_colaborador(self):
@@ -80,13 +80,13 @@ class CrudColaboradores:
     def remover_colaborador(self):
         print("*****************************************************************************")
         print("------------------------MENU REMOVER COLABORADOR---------------------------")
-        
+
         id = int(input("Informe o ID do colaborador a ser removido: "))
         removido = False
         
         for colaborador in self.lista_colaboradores:
             if colaborador["id"] == id:
-                self.lista_colaboradores.remove(colaborador)
+                self.lista_colaboradores.remove(colaborador) # Remove o colaborador da lista
                 print("Colaborador removido com sucesso!")
                 removido = True
                 break
@@ -120,7 +120,7 @@ def main():
                 )
         
         if opcao == "1":
-            crud.id_global += 1
+            crud.id_global += 1 # Incrementa o ID global
             crud.cadastrar_colaborador(crud.id_global)
         elif opcao == "2":
             crud.consultar_colaborador()

@@ -111,6 +111,7 @@ class Petshop:
 		def boas_vindas(self):
 			print("Bem-vindo ao Petshop do Alfredo de Aguiar Braule Pinto Neto")
 
+	  #pega o input do usuario, faz as verificações e sanitizações, seta o valor base e retorna um status de sucesso ou fracasso
 		def cachorro_peso(self):
 			self.peso = input("Entre com o peso do cachorro: ")
 			if self._is_convertible_to_numeric(self.peso):
@@ -122,6 +123,7 @@ class Petshop:
 				print("\nVocê digitou um valor não numérico")
 				return False
 
+		# seta o valor base de acordo com o input
 		def _is_valid_weight(self, value):
 			if value < 3:
 				self.valor_base = 40
@@ -138,6 +140,7 @@ class Petshop:
 			
 			return False
 		
+		#pega o input do usuario, faz as verificações e sanitizações, seta o valor base e retorna um status de sucesso ou fracasso
 		def cachorro_pelo(self):
 			self.pelo = input(
 									"Entre com o pelo do cachorro:\n"
@@ -150,6 +153,7 @@ class Petshop:
 				return self.multiplicador
 			return False
 
+	  #seta o multiplicador
 		def _is_valid_furr(self, value):
 			if value not in ["c", "m", "l"]:
 				return False
@@ -164,6 +168,7 @@ class Petshop:
 				self.multiplicador = 2
 				return True
 		
+		#pega o input do usuario, faz as verificações e sanitizações, seta o valor base e retorna um status de sucesso ou fracasso
 		def cachorro_extra(self):
 			adicional = int(input("Deseja adicionar mais algum serviço?\n"
                   "1 - Corte de Unhas - R$ 10,00\n"
@@ -175,6 +180,7 @@ class Petshop:
 				return self.extra
 			return False
 		
+		#seta o valor adicional
 		def _is_valid_extra(self, value):
 			if value not in [1, 2, 3, 0]:
 				return False
@@ -192,9 +198,11 @@ class Petshop:
 				self.extra += 0
 				return False
 		
+		#calcula o total de acordo com os inputs
 		def calcular_total(self, base, multiplicador, extra):
 			self.total = (base * multiplicador) + extra
-			
+
+		# verifica se o valor(string) pode ser convertido para número usando o método isdigit()	
 		def _is_convertible_to_numeric(self, valor):
 			if isinstance(valor, str):
 					if valor.startswith('-'):
